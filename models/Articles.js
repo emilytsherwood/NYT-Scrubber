@@ -9,18 +9,12 @@ var ArticleSchema =  new Schema ({
         required: true
     },
     date: {
-        type: String,
+        type: Date,
         required: true
     },
     url: {
         type: String,
         required: true
-    }
-    // Will only save one comment's ObjectId
-    // Ref refers to the Comment model
-    comment: {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
     }
 });
 
