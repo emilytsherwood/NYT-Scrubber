@@ -68,9 +68,19 @@ app.post("/api/saved", function(req, res) {
 });
 
 // DELETE to delete a saved article from the Database
-app.delete("/api/saved", function(req, res) {
-
-})
+app.delete("/api/saved/:id", function(req, res) {
+    Article.remove({
+        _id: req.params.id})
+        // Will execute the above query
+        .exec(function (err, data) {
+        if (err) {
+            console.log(err);
+        }
+        else {
+            res.send(data);
+        }
+    });
+}
 
 app.listen(3000, function() {
     console.log("App running on Port 3000");
