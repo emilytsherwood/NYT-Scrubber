@@ -4,11 +4,14 @@ var app = express();
 var bodyParser = require("body-parser");
 
 var mongoose = require("mongoose");
-var Article = require("./models/Article.js");
+var Article = require("./models/Articles.js");
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
+
+app.use(express.static("public"));
 
 var PORT = process.env.PORT || 3000;
 
@@ -22,6 +25,11 @@ db.once('open', function() {
 });
 
 // Routes
+
+// GET main page, serving up the HTML page
+app.get("/", function(req, res) {
+    res.sendFile(path.join(__dirname+ "/index.html"));
+});
 
 // GET route for all articles
 app.get("/api/saved", function(req, res) {
@@ -82,7 +90,7 @@ app.delete("/api/saved/:id", function(req, res) {
             res.send(data);
         }
     });
-}
+});
 
 app.listen(3000, function() {
     console.log("App running on Port 3000");
