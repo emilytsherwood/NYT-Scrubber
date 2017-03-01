@@ -36,12 +36,15 @@ var Main = React.createClass({
                                             <input type="number" className="form-control" id="endYearInput" placeholder="End year" />
                                         </label>
                                         <button type="button" className="btn btn-success" onClick={this.handleClick}>Search</button>
-
-              </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
     }
-})
+});
 
 module.exports = Main;
