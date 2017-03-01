@@ -6,5 +6,10 @@ var ReactDOM = require("react-dom");
 var Main = require("./components/Main");
 
 // Will render the main component, in this case, Main.js
-ReactDOM.render(<Main />, document.getElementById("app"));
+var where = document.getElementById("app");
+ReactDOM.render(
+    <div>   
+        <Main />
+    </div>
+, where);
 
