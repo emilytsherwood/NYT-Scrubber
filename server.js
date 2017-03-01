@@ -35,10 +35,11 @@ app.get("/api/saved", function(req, res) {
     });
 });
 
+
 // GET route to query MongoDB for saved articles
 app.get("/api/saved", function(req, res) {
     // Go to Mongo collection and find all saved articles
-    Article.find({ "saved": true }, function(error, found) {
+    Article.find({}, function(error, found) {
         // Errors
         if (error) {
             console.log(error);
@@ -52,17 +53,18 @@ app.get("/api/saved", function(req, res) {
 // POST route to save an article to the Database
 app.post("/api/saved", function(req, res) {
     // Saving the request body as an object called saveArticles
-    var saveArticles = req.body;
-    // Setting the object to have a boolean value so we know if it is saved or not saved
-    saveArticles.saved = false;
+    var saveArticles = new Articles(req.body);
 
-    db.articles.save(saveArticles, function(error, saved) {
+    // Setting the object to have a boolean value so we know if it is saved or not saved
+    // saveArticles.saved = false;
+
+    saveArticles.save(function(error, doc) {
         // Errors
         if (error) {
             console.log(error);
         }
         else {
-            res.send(saved);
+            res.send(doc);
         }
     });
 });
