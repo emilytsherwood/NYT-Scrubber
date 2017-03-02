@@ -27,7 +27,7 @@ db.once('open', function() {
 // Routes
 
 // GET main page, serving up the HTML page
-app.get("/", function(req, res) {
+app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname+ "/index.html"));
 });
 
@@ -47,7 +47,9 @@ app.get("/api/saved", function(req, res) {
 // GET route to query MongoDB for saved articles
 app.get("/api/saved", function(req, res) {
     // Go to Mongo collection and find all saved articles
-    Article.find({}, function(error, found) {
+    Article.find({})
+        .limit(5)
+        .exec(function (error, found) {
         // Errors
         if (error) {
             console.log(error);
