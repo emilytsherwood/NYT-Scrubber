@@ -15,7 +15,7 @@ var helper = {
     // Figure out the geolocation
     var queryURL =  "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newyorktimesAP + "&q=";
     return axios.get(queryURL).then(function(response) {
-      // If get get a result, return that result's formatted address property
+      // If we get a result, return that result's formatted address property
       if (response.data.results[0]) {
         return response.data.results[0].formatted;
       }
@@ -26,12 +26,12 @@ var helper = {
 
   // This function hits our own server to retrieve the record of query results
   getHistory: function() {
-    return axios.get("/api");
+    return axios.get("/api/saved");
   },
 
   // This function posts new searches to our database.
-  postHistory: function(location) {
-    return axios.post("/api", { location: location });
+  postHistory: function(article) {
+    return axios.post("/api/saved", { article: article });
   }
 };
 

@@ -4,8 +4,67 @@ var React = require("react");
 // Including sub-components
 var Search = require("./Search");
 
+// Helper for making AJAX requests to our API
+var helpers = require("./utils/helpers");
+
 // The Main component (The parent)
 var Main = React.createClass({
+
+    getInitialState: function() {
+        return {
+            searchArticles: "",
+            startYear: "",
+            endYear: "",
+            results: "",
+            duplicates: false,
+            resultsHistory: []
+        }
+    },
+
+     // The moment the page renders get the History
+  componentDidMount: function() {
+    // Get the latest history.
+    helpers.getHistory().then(function(response) {
+      console.log(response);
+      if (response !== this.state.resultsHistory) {
+        console.log("History", response.data);
+        this.setState({ resultHistory: response.data });
+      }
+    }.bind(this));
+  },
+
+  // If the component changes (i.e. if a search is entered)...
+  componentDidUpdate: function() {
+
+    // Run the query for the address
+    helpers.runQuery(this.state.searchArticles).then(function(data) {
+      if (data !== this.state.results) {
+        console.log("Address", data);
+        this.setState({ results: data });
+
+    // After we've received the result... then post the search term to our history.
+    helpers.postHistory(this.state.searchArticles).then(function() {
+        console.log("Updated!");
+
+    // After we've done the post... then get the updated history
+    helpers.getHistory().then(function(response) {
+        console.log("Current History", response.data);
+
+        console.log("History", response.data);
+
+            this.setState({ resultsHistory: response.data });
+
+          }.bind(this));
+        }.bind(this));
+      }
+    }.bind(this));
+  },
+
+  // This function allows childrens to update the parent.
+  setTerm: function(term) {
+    this.setState({ searchArticles: term });
+  },
+
     // Describing the component's render method
     render: function() {
         return (
@@ -15,32 +74,14 @@ var Main = React.createClass({
                         <h1 className="heading-display">New York Times - Article Scrubber</h1>
                         <p className="subheading-display">Search for and save articles of interest!</p>
                     </div>
+
                     <div className="col-md-12">
                         <div className="panel panel-default">
                             <div className="panel-heading">
                                 <h3 className="panel-title text-center">Search</h3>
                             </div>
                             <div className="panel-body">
-                                <form>
-                                    <div className="form-group">
-                                        <label>
-                                            Topic:
-                                            <input type="text" className="form-control" id="searchInput" placeholder="Search articles" />
-                                        </label>
-                                        <br />
-                                        <label>
-                                            Start Year:
-                                            <input type="number" className="form-control" id="startYearInput" placeholder="Start year" />
-                                        </label>
-                                        <br />
-                                        <label>
-                                            End Year:
-                                            <input type="number" className="form-control" id="endYearInput" placeholder="End year" />
-                                        </label>
-                                        <br />
-                                        <button type="button" className="btn btn-success" onClick={this.handleClick}>Search</button>
-                                    </div>
-                                </form>
+                                <Search setTerm={this.setTerm} />
                             </div>
                         </div>
                     </div>
