@@ -2,7 +2,7 @@
 var React = require("react");
 
 // Including sub-components
-var Saved = require("./Saved");
+var Saved = require("./children/Saved");
 
 // The Main component (The parent)
 var Search = React.createClass({
@@ -10,7 +10,6 @@ var Search = React.createClass({
     render: function() {
         return (
             <form>
-                {/*<div className="form-group">*/}
                     <label>
                         Topic:
                         <input type="text" className="form-control" id="searchInput" placeholder="Search articles" />

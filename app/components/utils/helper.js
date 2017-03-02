@@ -8,9 +8,9 @@ var newyorktimesAPI = "08c4a36d32804e9287729e50349c495d"
 var helper = {
 
   // This function serves our purpose of running the query to geolocate.
-  runQuery: function(location) {
+  runQuery: function(article) {
 
-    console.log(location);
+    console.log(article);
 
     // Figure out the geolocation
     var queryURL =  "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newyorktimesAP + "&q=";

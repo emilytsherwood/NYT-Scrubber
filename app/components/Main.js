@@ -2,10 +2,10 @@
 var React = require("react");
 
 // Including sub-components
-var Search = require("./Search");
+var Search = require("./children/Search");
 
 // Helper for making AJAX requests to our API
-var helpers = require("./utils/helpers");
+var helpers = require("./utils/helper");
 
 // The Main component (The parent)
 var Main = React.createClass({
@@ -28,7 +28,7 @@ var Main = React.createClass({
       console.log(response);
       if (response !== this.state.resultsHistory) {
         console.log("History", response.data);
-        this.setState({ resultHistory: response.data });
+        this.setState({ resultsHistory: response.data });
       }
     }.bind(this));
   },
@@ -81,7 +81,7 @@ var Main = React.createClass({
                                 <h3 className="panel-title text-center">Search</h3>
                             </div>
                             <div className="panel-body">
-                                <Search setTerm={this.setTerm} />
+                                <Search  />
                             </div>
                         </div>
                     </div>
