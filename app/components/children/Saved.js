@@ -1,5 +1,6 @@
 // Include React
 var React = require("react");
+var axios = require("axios");
 
 // This is the History component. It will be used to show a log of  recent searches.
 var Saved = React.createClass({
@@ -8,7 +9,7 @@ var Saved = React.createClass({
     return (
       <div className="panel panel-default">
         <div className="panel-heading">
-          <h3 className="panel-title text-center">Saved Articlesy</h3>
+          <h3 className="panel-title text-center">Saved Articles</h3>
         </div>
         <div className="panel-body text-center">
 
