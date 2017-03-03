@@ -73,7 +73,7 @@ var Search = React.createClass({
             <form>
                     <label>
                         Topic:
-                        <input type="text" className="form-control text-center" id="term" placeholder="Search articles" required />
+                        <input value={this.state.term} type="text" className="form-control text-center" id="term" placeholder="Search articles" onChange={this.handleChange} required />
                     </label>
                     <br />
                     <label>
@@ -85,7 +85,7 @@ var Search = React.createClass({
                         End Year:
                         <input type="number" className="form-control" id="endYearInput" placeholder="End year" />
                     </label>
-                        <button type="submit" className="btn btn-success">Search</button>
+                        <button type="submit" className="btn btn-success" onClick={this.handleClick}>Search</button>
                 </form>
 
         )
