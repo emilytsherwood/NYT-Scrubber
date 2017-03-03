@@ -5,7 +5,6 @@ var Router = require("react-router");
 // Including sub-components
 var Search = require("./children/Search");
 
-
 // The Main component (The parent)
 var Main = React.createClass({
 

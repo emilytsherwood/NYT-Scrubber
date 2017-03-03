@@ -16,7 +16,7 @@ var Saved = React.createClass({
           {/* Here we use a map function to loop through an array in JSX */}
           {this.props.history.map(function(search, i) {
             return (
-              <li key={i}>{search.location} - {search.date}</li>
+              <li key={response.index}>title={response.title} - {response.url}</li>
             );
           })}
         </div>
