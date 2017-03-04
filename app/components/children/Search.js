@@ -106,6 +106,10 @@ var Search = React.createClass({
                     </label>
                         <button type="submit" className="btn btn-success" onClick={this.handleClick}>Search</button>
                 </form>
+                <div>
+                  {/*Will grab your Saved.js folder*/}
+                {this.props.children}
+                </div>
 
         )
     }
