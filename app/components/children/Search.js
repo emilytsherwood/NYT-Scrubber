@@ -89,6 +89,7 @@ var Search = React.createClass({
         //   })}
 
          return (
+           <div>
             <form>
                     <label>
                         Topic:
@@ -104,15 +105,17 @@ var Search = React.createClass({
                         End Year:
                         <input type="number" className="form-control" id="endYearInput" placeholder="End year" />
                     </label>
-                        <button type="submit" className="btn btn-success" onClick={this.handleClick}>Search</button>
+                    <div>
+                        <a href="#/Search/Results"><button type="submit" className="btn btn-success" onClick={this.handleClick}>Search</button></a>
+                    </div>
                 </form>
-                <div>
-                  {/*Will grab your Saved.js folder*/}
-                {this.props.children}
-                </div>
-
-        )
-    }
+                {/*<Results></Results>*/}
+              </div>
+                
+                
+                
+          );
+      }
 });
                          
 module.exports=Search;
