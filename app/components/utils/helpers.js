@@ -1,13 +1,13 @@
 // Include the axios package for performing HTTP requests (promise based alternative to request)
 var axios = require("axios");
 
-// Geocoder API
+// NYT API
 var newyorktimes = "08c4a36d32804e9287729e50349c495d"
 
 // Helper functions for making API Calls
 var helper = {
 
-  // This function serves our purpose of running the query to geolocate.
+  // This function serves our purpose of running the query to NYT.
   runQuery: function(article) {
 
     console.log(article);

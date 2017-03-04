@@ -30,7 +30,7 @@ db.once('open', function() {
 
 // GET main page, serving up the HTML page
 app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname+ "/index.html"));
+    res.sendFile(path.join(__dirname+ "/public/index.html"));
 });
 
 // GET route for all articles
