@@ -24,7 +24,7 @@ var Main = React.createClass({
                                 <h3 className="panel-title text-center">Search</h3>
                             </div>
                             <div className="panel-body">
-                                <Search  />
+                                <Search></Search>
                             </div>
                         </div>
                     </div>

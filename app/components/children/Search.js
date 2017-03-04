@@ -12,7 +12,8 @@ var Saved = require("./Saved.js");
 // The Main component (The parent)
 var Search = React.createClass({
 
-        getInitialState: function() {
+    getInitialState: function() {
+      // console.log('here');
         return {
             searchTerm: "",
             results: []
@@ -62,14 +63,32 @@ var Search = React.createClass({
   setTerm: function(term) {
     this.setState({ searchTerm: term });
   },
+ // This function will respond to the user input
+  handleChange: function(event) {
+
+    this.setState({ term: event.target.value });
+
+  },
+
+  // When a user submits...
+  handleSubmit: function(event) {
+    // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
+    // clicking the button
+    event.preventDefault();
+
+    // Set the parent to have the search term
+    this.props.setTerm(this.state.term);
+    this.setState({ term: "" });
+  },
     // Describing the component's render method
     render: function() {
-        var allArticles = this.props.history.map(function(search, i) {
-            return (
-              <li key={response.index}>title={response.title} - {response.url}</li>
-            );
-          })}
-         (
+        // var allArticles = this.state.history.map(function(search, i) {
+        //     return (
+        //       <li key={response.index}>title={response.title} - {response.url}</li>
+        //     );
+        //   })}
+
+         return (
             <form>
                     <label>
                         Topic:
@@ -89,6 +108,7 @@ var Search = React.createClass({
                 </form>
 
         )
-    });
+    }
+});
                          
-        
+module.exports=Search;

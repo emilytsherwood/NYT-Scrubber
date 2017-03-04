@@ -2,7 +2,7 @@
 var axios = require("axios");
 
 // Geocoder API
-var newyorktimesAPI = "08c4a36d32804e9287729e50349c495d"
+var newyorktimes = "08c4a36d32804e9287729e50349c495d"
 
 // Helper functions for making API Calls
 var helper = {
@@ -13,7 +13,7 @@ var helper = {
     console.log(article);
 
     // Figure out the geolocation
-    var queryURL =  "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newyorktimesAPI + "&q=";
+    var queryURL =  "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newyorktimes + "&q=";
     return axios.get(queryURL).then(function(response) {
       // If we get a result, return that result's formatted address property
       if (response.data.results[0]) {

@@ -12,9 +12,8 @@ var Saved = React.createClass({
           <h3 className="panel-title text-center">Saved Articles</h3>
         </div>
         <div className="panel-body text-center">
-
           {/* Here we use a map function to loop through an array in JSX */}
-          {this.props.history.map(function(search, i) {
+          {this.state.history.map(function(search, i) {
             return (
               <li key={response.index}>title={response.title} - {response.url}</li>
             );
@@ -26,4 +25,4 @@ var Saved = React.createClass({
 });
 
 // Export the component back for use in other files
-module.exports = History;
+module.exports = Saved;
