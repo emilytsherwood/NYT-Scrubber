@@ -65,7 +65,7 @@ app.get("/api/saved", function(req, res) {
 // POST route to save an article to the Database
 app.post("/api/saved", function(req, res) {
     // Saving the request body as an object called saveArticles
-    var saveArticles = new Articles(req.body);
+    var saveArticles = new Article(req.body);
 
     // Setting the object to have a boolean value so we know if it is saved or not saved
     // saveArticles.saved = false;

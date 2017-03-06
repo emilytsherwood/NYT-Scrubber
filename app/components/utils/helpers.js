@@ -14,10 +14,11 @@ var helper = {
 
     // Figure out the geolocation
     var queryURL =  "https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=" + newyorktimes;
-    return axios.get(queryURL).then(function(response) {
+    return axios.get(queryURL).then(function(r) {
+      console.log(r.data.response.docs);
       // If we get a result, return that result's formatted address property
-      if (response.data.results[0]) {
-        return response.data.results[0].formatted;
+      if (r.data.response.docs[0]) {
+        return r.data.response.docs[0].formatted;
       }
       // If we don't get any results, return an empty string
       return "";
